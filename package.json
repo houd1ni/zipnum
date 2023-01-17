@@ -1,0 +1,82 @@
+{
+  "author": {
+    "name": "Michael houd1ni Akiliev"
+  },
+  "bugs": {
+    "url": "https://github.com/houd1ni/zipnum/issues"
+  },
+  "deprecated": false,
+  "description": "Number to ancii or utf string packing and vise-versa.",
+  "homepage": "https://houd1ni.github.io/pepka/",
+  "keywords": [
+    "serialization",
+    "deserialization",
+    "compression",
+    "deflate",
+    "zip",
+    "number",
+    "pure",
+    "strongly-typed",
+    "typescript",
+    "d.ts"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/bundle.mjs",
+      "require": "./dist/bundle.cjs"
+    }
+  },
+  "name": "zipnum",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/houd1ni/zipnum.git"
+  },
+  "scripts": {
+    "lint": "tslint src/*.ts",
+    "test": "npm run gentypes && npm run prod:es && ava",
+    "test:report": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "test:lazy": "ava",
+    "gentypes": "dts-bundle-generator --no-check -o dist/bundle.d.ts src/index.ts",
+    "dev": "cross-env NODE_ENV=development BUILD=es rollup -c",
+    "prod:cjs": "cross-env NODE_ENV=production BUILD=cjs rollup -c",
+    "prod:es": "cross-env NODE_ENV=production BUILD=es rollup -c",
+    "prod": "npm run gentypes && npm run prod:es && npm run prod:cjs",
+    "all": "npm run dev && npm run prod"
+  },
+  "version": "1.0.0",
+  "ava": {
+    "files": [
+      "./test/specs/*.js"
+    ],
+    "failFast": true,
+    "timeout": "2m",
+    "nodeArguments": [
+      "--experimental-specifier-resolution=node"
+    ]
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.3",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.1",
+    "@rollup/plugin-terser": "^0.1.0",
+    "@types/node": "^18.11.11",
+    "ava": "^5.1.0",
+    "codecov": "^3.8.2",
+    "cross-env": "^7.0.3",
+    "dts-bundle-generator": "^7.1.0",
+    "nyc": "^15.1.0",
+    "prepend": "^1.0.2",
+    "rollup": "^3.6.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "ts-node": "^10.9.1",
+    "tslint": "^6.1.0",
+    "typescript": "^4.9.4"
+  },
+  "types": "./dist/bundle.d.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "pepka": "^1.0.0-beta.1"
+  }
+}

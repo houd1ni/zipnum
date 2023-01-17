@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "lib": [ "esnext", "DOM" ],
+    "strictNullChecks": true,
+    "target": "esnext",
+    "module": "esnext",
+    "allowJs": false,
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "rootDir": "src",
+    "baseUrl": ".",
+    "outDir": "dist/ts"
+  },
+  "include": [ "src/**/*" ]
+}
