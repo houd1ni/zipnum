@@ -12,7 +12,7 @@ export default {
       ? 'dist/bundle.dev.js'
       : process.env.BUILD == 'cjs' ? 'dist/bundle.cjs' : 'dist/bundle.mjs',
     format: process.env.BUILD == 'cjs' ? 'cjs' : 'es',
-    name: 'pepka'
+    name: 'zipnum'
   },
   treeshake: { moduleSideEffects: false },
   plugins: [

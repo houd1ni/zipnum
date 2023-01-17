@@ -2,9 +2,8 @@
 
 /** Sets an alphabet to encode into.
  * @param {string} [newABC] - all symbols must be unique.
- * @param {boolean} [standard=false] - Is it a usual hex-like sequence 0...z? Defaults to false.
 */
-export declare const setABC: (newABC: string, standard?: boolean) => void;
+export declare const setABC: (newABC: string) => void;
 /** Zips number to a string by encoding into given alphabet.
  * @param {number} [n] - Number to zip.
 */
