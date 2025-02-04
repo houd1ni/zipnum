@@ -16,20 +16,29 @@ According to jsben.ch tests on intel 12100 / DDR4-3200-16 @ firefox107:
 ## API with examples
 
 ```typescript
-import { setABC, zipnum, unzipnum } from 'zipnum'
+// Using class constructor instead of direct imports are new to ver2 to avoid settings interference.
+
+// zipnum.ts, utils.ts or whatever:
+import { Zipnum } from 'zipnum'
+
+const zipnum = new Zipnum() // or new Zipnum(abc)
 
 // importing and calling setABC is fully optional,
 //   because it is already called with 62-length alphabet under the hood and ready.
 // But you can call it with large utf-8 sequences to compress stronger.
-// Argument is a new alphabet.
-setABC('0123456789abcdefghijklmnopqrstuvwxyz')
+// Argument is a new alphabet. Shortcut is to call constructor with this: new Zipnum(abc).
+zipnum.setABC('0123456789abcdefghijklmnopqrstuvwxyz')
+export {zipnum}
 
-const packedString0 = zipnum(0) // -> '0'
-const packedString1 = zipnum(10) // -> 'a'
-const packedString2 = zipnum(564654987) // -> 'aq9rtm'
+// anythingelse.ts:
+import {zipnum} from './zipnum' // that zipnum.ts, utils.ts or whatever (see above).
 
-setABC('abcdefghijklmnopqrstuvwxyz!@#$%^&*()_')
-const packedString3 = zipnum(564654987) // -> 'jmgsu@'
-const unpackedNumber = unzipnum(packedString3) // -> 564654987
+const packedString0 = zipnum.zip(0) // -> '0'
+const packedString1 = zipnum.zip(10) // -> 'a'
+const packedString2 = zipnum.zip(564654987) // -> 'aq9rtm'
+
+zipnum.setABC('abcdefghijklmnopqrstuvwxyz!@#$%^&*()_')
+const packedString3 = zipnum.zip(564654987) // -> 'jmgsu@'
+const unpackedNumber = zipnum.unzip(packedString3) // -> 564654987
 
 ```
