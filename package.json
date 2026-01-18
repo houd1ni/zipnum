@@ -24,6 +24,7 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/bundle.d.ts",
       "import": "./dist/bundle.mjs",
       "require": "./dist/bundle.cjs"
     }
@@ -45,7 +46,7 @@
     "prod": "npm run gentypes && npm run prod:es && npm run prod:cjs",
     "all": "npm run dev && npm run prod"
   },
-  "version": "2.0.0",
+  "version": "2.0.1",
   "ava": {
     "files": [
       "./test/specs/*.js"
